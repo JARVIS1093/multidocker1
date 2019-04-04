@@ -6,10 +6,10 @@ before_install:
 script:
         - docker run react-test npm test -- --coverage
 after_success:
-        - docker build -t react multi-client ./client 
-        - docker build -t react multi-nginx ./nginx
-        - docker build -t react multi-server ./server
-        - docker build -t react multi-worker ./worker
+        - docker build -t multi-client ./client 
+        - docker build -t multi-nginx ./nginx
+        - docker build -t multi-server ./server
+        - docker build -t multi-worker ./worker
         - echo "$docker_password" | docker login -u "$docker_id" --password-stdin
         - docker push multi-client
         - docker push multi-nginx
